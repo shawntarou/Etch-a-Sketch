@@ -5,19 +5,8 @@ let gridHeight;
 
 
 function promptUser () {
-    gridWidth = prompt ("Enter Width: ");
-    valueCheck(gridWidth);
-    if (valueCheck == true) {promptUser(); return;}
-    gridHeight = prompt ("Enter Height: ");
-    valueCheck(gridHeight);
-    if (valueCheck == true) {promptUser(); return;}
-}
-
-function valueCheck (value) {
-    if (!(Number.isInteger(value) || value <= 100) || value == null) {
-        alert("That's not allowed!!")
-        return true;
-    }
+    gridWidth = prompt ("Enter Width < 101: ");
+    gridHeight = prompt ("Enter Height < 101: ");
 }
 
 function createCanvas (width, height) { 
