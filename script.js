@@ -4,14 +4,16 @@ let gridHeight;
 let checkNull
 
 
-
 function promptUser() {
     gridWidth = prompt("Enter Width < 101: ");
     if (!gridWidth) { checkNull = true; return; }
-    if (gridWidth > 100) { checkNull = true; alert ("Number too big"); return; }
+    if (gridWidth > 100) { checkNull = true; alert("Number too big"); return; }
+    if (isNaN(gridWidth)) { checkNull = true; alert("Not a valid number"); return; }
+
     gridHeight = prompt("Enter Height < 101: ");
     if (!gridHeight) { checkNull = true; return; }
-    if (gridHeight > 100) { checkNull = true; alert ("Number too big"); return; }
+    if (gridHeight > 100) { checkNull = true; alert("Number too big"); return; }
+    if (isNaN(gridHeight)) { checkNull = true; alert("Not a valid number"); return; }
     checkNull = false;
 }
 
