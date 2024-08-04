@@ -1,5 +1,6 @@
 const container = document.getElementById("container");
 let gridSize = 16;
+let gridSizePlaceHolder;
 let checkNull
 let currentPen = "black";
 
@@ -13,12 +14,12 @@ document.querySelector("#random").addEventListener("click", () => {
 
 
 function promptUser() {
-    gridSize = prompt("Enter Number from 0 - 100: ");
-    if (!gridSize) { checkNull = true; return; }
-    if (gridSize > 100) { checkNull = true; alert("Number too big"); return; }
-    if (isNaN(gridSize)) {
+    gridSizePlaceHolder = prompt("Enter Number from 0 - 100: ");
+    if (!gridSizePlaceHolder) { checkNull = true; return; }
+    else if (gridSizePlaceHolder > 100) { checkNull = true; alert("Number too big"); return; }
+    else if (isNaN(gridSizePlaceHolder)) {
         checkNull = true; alert("Not a valid number"); return;
-    }
+    } else (checkNull = false);
 }
 
 function createCanvas(size) {
@@ -83,8 +84,8 @@ resetButton.addEventListener("click", () => {
     }
 
     if (!(isNaN(gridSize))) {
+        gridSize = gridSizePlaceHolder;
         clearCanvas();
         createCanvas(gridSize);
-        gridSize = size;
     } else { return; }
 })
