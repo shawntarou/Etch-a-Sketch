@@ -1,12 +1,16 @@
 const container = document.getElementById("container");
 let gridWidth;
 let gridHeight;
+let checkNull
 
 
 
 function promptUser () {
     gridWidth = prompt ("Enter Width < 101: ");
+    if (!gridWidth) {checkNull = true; return;}
     gridHeight = prompt ("Enter Height < 101: ");
+    if (!gridHeight) {checkNull = true; return;}
+    checkNull = false;
 }
 
 function createCanvas (width, height) { 
@@ -39,8 +43,15 @@ const resetButton = document.getElementById("reset-button");
 
 resetButton.addEventListener("click", () => {
     promptUser();
-    clearCanvas();
-    createCanvas(gridWidth, gridHeight);
+    if (checkNull == true) {
+    console.log("null");
+    return;
+    }
+    
+    if (!(isNaN(gridWidth) && isNaN(gridHeight))) {
+        clearCanvas();
+        createCanvas(gridWidth, gridHeight);
+    } else {return;}
 })
 
 
