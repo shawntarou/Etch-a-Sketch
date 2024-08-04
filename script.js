@@ -5,25 +5,24 @@ let checkNull
 
 
 function promptUser() {
-    gridWidth = prompt("Enter Width < 101: ");
-    if (!gridWidth) { checkNull = true; return; }
-    if (gridWidth > 100) { checkNull = true; alert("Number too big"); return; }
-    if (isNaN(gridWidth)) { checkNull = true; alert("Not a valid number"); return; }
-
-    gridHeight = prompt("Enter Height < 101: ");
-    if (!gridHeight) { checkNull = true; return; }
-    if (gridHeight > 100) { checkNull = true; alert("Number too big"); return; }
-    if (isNaN(gridHeight)) { checkNull = true; alert("Not a valid number"); return; }
-    checkNull = false;
+    gridSize = prompt("Enter Number < 101: ");
+    if (!gridSize) { checkNull = true; return; }
+    if (gridSize > 100) { checkNull = true; alert("Number too big"); return; }
+    if (isNaN(gridSize)) {
+        checkNull = true; alert("Not a valid number"); return;
+    }
 }
 
-function createCanvas(width, height) {
-    for (let i = 0; i < parseInt(width); i++) {
+function createCanvas(size) {
+    const squareSize = 960 / size;
+    for (let i = 0; i < parseInt(size); i++) {
         const miniContainer = document.createElement("div");
         container.appendChild(miniContainer);
-        for (let i = 0; i < parseInt(height); i++) {
+        for (let i = 0; i < parseInt(size); i++) {
             const div = document.createElement("div");
             div.classList.add("grid-square");
+            div.style.width = `${squareSize}px`;
+            div.style.height = `${squareSize}px`;
             miniContainer.appendChild(div);
             div.addEventListener("mouseenter", () => {
                 div.classList.add("grid-square-colored");
@@ -38,7 +37,7 @@ function clearCanvas() {
     }
 }
 
-createCanvas(16, 16);
+createCanvas(100, 100);
 
 const square = document.getElementsByClassName("grid-square");
 
@@ -50,10 +49,8 @@ resetButton.addEventListener("click", () => {
         return;
     }
 
-    if (!(isNaN(gridWidth) && isNaN(gridHeight))) {
+    if (!(isNaN(gridSize))) {
         clearCanvas();
-        createCanvas(gridWidth, gridHeight);
+        createCanvas(gridSize);
     } else { return; }
 })
-
-
