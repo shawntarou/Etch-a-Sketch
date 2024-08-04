@@ -43,7 +43,7 @@ function createCanvas(size) {
                     let opacity = Number(div.style.opacity);
                     div.style.opacity = opacity >= 1 ? "1" : opacity + 0.1 + "";
                     let randomColor = getRandomColor();
-                    console.log(randomColor);
+                    // console.log(randomColor);
                     div.style.backgroundColor = randomColor;
                 }
             })
