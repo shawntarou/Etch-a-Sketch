@@ -1,0 +1,40 @@
+body {
+    margin:0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.grid-square {
+    border: 1px solid black;
+    height: 15px;
+    width: 15px;
+}
+
+.grid-square-colored {
+    background-color: yellow;
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    max-width: 10000px;
+}
+
+#reset-button {
+    padding: 10px;
+    margin: 1.5em;
+    height: 50px;
+    width: 100px;
+    border-radius: 10px;
+}
+
+#page-contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
