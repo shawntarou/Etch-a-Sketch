@@ -5,7 +5,7 @@ let checkNull
 
 
 function promptUser() {
-    gridSize = prompt("Enter Number < 101: ");
+    gridSize = prompt("Enter Number from 0 - 100: ");
     if (!gridSize) { checkNull = true; return; }
     if (gridSize > 100) { checkNull = true; alert("Number too big"); return; }
     if (isNaN(gridSize)) {
@@ -25,10 +25,19 @@ function createCanvas(size) {
             div.style.height = `${squareSize}px`;
             miniContainer.appendChild(div);
             div.addEventListener("mouseenter", () => {
-                div.classList.add("grid-square-colored");
+                let randomColor = getRandomColor();
+                console.log (randomColor);
+                div.style.backgroundColor = randomColor;
             })
         }
     }
+}
+
+function getRandomColor () {
+    const rgbValue1 = (Math.floor(Math.random() * 255));
+    const rgbValue2 = (Math.floor(Math.random() * 255));
+    const rgbValue3 = (Math.floor(Math.random() * 255));
+    return `rgb(${rgbValue1}, ${rgbValue2}, ${rgbValue3})`
 }
 
 function clearCanvas() {
@@ -37,7 +46,7 @@ function clearCanvas() {
     }
 }
 
-createCanvas(100, 100);
+createCanvas(16, 16);
 
 const square = document.getElementsByClassName("grid-square");
 

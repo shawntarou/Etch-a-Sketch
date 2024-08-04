@@ -12,10 +12,6 @@ head {
     border: 1px solid black;
 }
 
-.grid-square-colored {
-    background-color: yellow;
-}
-
 #container {
     display: flex;
     flex-direction: row;
