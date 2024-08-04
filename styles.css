@@ -8,28 +8,43 @@ head {
     padding: 0;
 }
 
-.grid-square {
-    border: 1px solid black;
-}
-
 #container {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 960px;
+    border: 1px solid black;
 }
 
-#reset-button {
+button {
     padding: 10px;
     margin: 1.5em;
     height: 50px;
     width: 100px;
     border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
 }
+
+#reset-button {
+    background-color: rgb(255, 58, 58);
+    color: white;
+}
+
+#black {
+    color: white;
+    background: black;
+}
+
+#random {
+    background-color: rgba(44, 139, 255, 0.581);
+}
+
 
 #page-contents {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }

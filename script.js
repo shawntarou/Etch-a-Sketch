@@ -1,7 +1,15 @@
 const container = document.getElementById("container");
-let gridWidth;
-let gridHeight;
+let gridSize = 16;
 let checkNull
+let currentPen = "black";
+
+document.querySelector("#black").addEventListener("click", () => {
+    currentPen = "black";
+});
+document.querySelector("#random").addEventListener("click", () => {
+    currentPen = "random";
+});
+
 
 
 function promptUser() {
@@ -25,15 +33,24 @@ function createCanvas(size) {
             div.style.height = `${squareSize}px`;
             miniContainer.appendChild(div);
             div.addEventListener("mouseenter", () => {
-                let randomColor = getRandomColor();
-                console.log (randomColor);
-                div.style.backgroundColor = randomColor;
+                if (currentPen == "black") {
+                    let opacity = Number(div.style.opacity);
+                    div.style.opacity = opacity >= 1 ? "1" : opacity + 0.1 + "";
+                    div.style.backgroundColor = "black";
+                }
+                else if (currentPen == "random") {
+                    let opacity = Number(div.style.opacity);
+                    div.style.opacity = opacity >= 1 ? "1" : opacity + 0.1 + "";
+                    let randomColor = getRandomColor();
+                    console.log(randomColor);
+                    div.style.backgroundColor = randomColor;
+                }
             })
         }
     }
 }
 
-function getRandomColor () {
+function getRandomColor() {
     const rgbValue1 = (Math.floor(Math.random() * 255));
     const rgbValue2 = (Math.floor(Math.random() * 255));
     const rgbValue3 = (Math.floor(Math.random() * 255));
@@ -45,6 +62,13 @@ function clearCanvas() {
         container.removeChild(container.firstChild)
     }
 }
+
+function onlyClear() {
+    clearCanvas();
+    createCanvas(gridSize);
+}
+
+document.querySelector("#clear").addEventListener("click", () => { onlyClear(); })
 
 createCanvas(16, 16);
 
@@ -61,5 +85,6 @@ resetButton.addEventListener("click", () => {
     if (!(isNaN(gridSize))) {
         clearCanvas();
         createCanvas(gridSize);
+        gridSize = size;
     } else { return; }
 })
